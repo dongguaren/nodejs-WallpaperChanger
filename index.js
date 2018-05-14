@@ -49,7 +49,7 @@ function ensureEmvirment() {
 
     // 2.检查配置文件
     console.log("检查配置文件");
-    if( !fs.existsSync( config.jsonSavedPath )) {
+    if( !fs.existsSync( config.jsonSavedPath ) ) {
         console.log("不存在配置文件，进行初始化");
         fs.writeFileSync(config.jsonSavedPath, JSON.stringify(new AllImgData.ImgMess()));
         console.log("配置文件初始化完成")
@@ -121,10 +121,10 @@ function main() {
     });
     setTimeout(() => JobStart(),1000*60);
 }
-main();
+// main();
 
 
-
+fs.existsSync( "config.json" )
 
 
 
