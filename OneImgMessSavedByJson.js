@@ -37,8 +37,9 @@ class ImgMess{
         if( this.imgArray.length < config.imgUpperLimit ){
             this.imgArray.push(oneImgMess);
         }else {
-            this.imgArray.push(oneImgMess);
+            fs.unlinkSync(config.imgSavedDic + "\\" + this.imgArray[0].imgDate + "_bingImg.jpg");
             this.imgArray.splice(0,1);
+            this.imgArray.push(oneImgMess);
         }
         return this;
     }
