@@ -3,6 +3,7 @@
  * @type {{imgSavedDic: string, imgUpperLimit: number, jsonSavedPath: string}}
  */
 const config = require('./config.js');
+const fs = require('fs');
 class OneImgMess{
     constructor(jsonObjectByNet){
         this.imgDate = new Date().toLocaleDateString();
