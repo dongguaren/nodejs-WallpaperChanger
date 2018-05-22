@@ -95,7 +95,7 @@ function JobStart() {
         getImgJsonObj(0).then(jsonObj =>  Promise.resolve(configContext.add(new AllImgData.OneImgMess(jsonObj))) )
             .then(() => downloadImgByUrl(configContext.getLatestImgUrl(),configContext.getLatestImgSavedPath()))
             .then(() => wallpaper.set(configContext.getLatestImgSavedPath()))
-            .then(() => saveContextToFile(configContext),err => {console.log(err);failed()});
+            .then(() => saveContextToFile(configContext),err => {console.log(err);console.log(err.stack);failed()});
 
     }else {
         console.log("今日图片已下载"  );
@@ -114,19 +114,15 @@ function main() {
 
     MyLog.handleConsoleLog();
 
-    console.log("has started");
+    console.log("-----------------------has started-----------------------");
     schedule.scheduleJob('30 0 0 * * *', function(){
         console.log("开始更换背景图片");
         JobStart();
     });
     setTimeout(() => JobStart(),1000*60);
 }
-// main();
-
-
-fs.existsSync( "config.json" )
-
-
+main();
+// JobStart();
 
 /**
  * 30 1 1 * * *
